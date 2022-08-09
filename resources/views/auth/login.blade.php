@@ -20,5 +20,3 @@
 {!! Form::close() !!}
 
 @endsection
-
-<!-- コメントアウト -->
