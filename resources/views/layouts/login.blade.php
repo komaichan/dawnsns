@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,17 +22,26 @@
 </head>
 <body>
     <header>
+        @guest
         <div id = "head">
         <h1><a><img src="images/logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
+                    <p>{{ Auth::user()->name }}さん<img src="images/arrow.png"></p>
                 <div>
                 <ul>
+                    @else
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+                    <li><a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">ログアウト</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                        </form>
+                    </li>
                 </ul>
+                @endguest
             </div>
         </div>
     </header>

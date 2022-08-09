@@ -13,4 +13,9 @@ class UsersController extends Controller
     public function search(){
         return view('users.search');
     }
+
+    // public function logout(){
+    //     Auth::logout();
+    //     return redirect()->route('/logout');
+    // }
 }
