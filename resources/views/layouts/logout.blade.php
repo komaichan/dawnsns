@@ -1,3 +1,6 @@
+<!-- authのpasswordフォルダに流用する用
+※レイアウトファイルは基本流用用 -->
+
 
 <!DOCTYPE html>
 <html>

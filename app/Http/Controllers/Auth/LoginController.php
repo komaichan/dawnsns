@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -27,13 +28,31 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/top';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'mail' => ['required|email|between:min4,max12|unique:users'],
+            'password' => ['required|between:min4,max12|unique:users|alpha_num'],
+        ],
+        [
+            'mail.required' => '入力必須です',
+            'mail.email' => 'メールアドレスを入力してください',
+            'mail.between:min4,max12' => '4文字以上12文字以内で入力してください',
+            'password.required' => '入力必須です',
+            'password.between:min4,max12' => '4文字以上12文字以内で入力してください',
+            'password.unique:users' => '既に登録されているパスワードです',
+            'password.alpha_num' => '使用できるのは英数字のみです'
+        ]
+    );
+    }
 
     public function __construct()
     {
@@ -53,8 +72,5 @@ class LoginController extends Controller
         return view("auth.login");
     }
 
-    public function logout(Request $request){
-        return view('auth.login');
-    }
 
 }

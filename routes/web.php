@@ -16,19 +16,25 @@
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
 
-// Auth::routes();
+Auth::routes();
 
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/logout', 'Auth\LoginController@logout');
 
+// Route::post('auth/logout-form', 'Auth\LoginController@auth.login');
+
+
+
+//新規登録のルーティング
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
+// post通信で/registerがきたら、Auth\RegisterControllerの中にあるregisterメソッドを実行
 
 Route::get('/added', 'Auth\RegisterController@added');
+
 
 
 //ログイン中のページ

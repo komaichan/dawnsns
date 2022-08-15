@@ -1,3 +1,6 @@
+<!-- ログイン後のフォルダに流用する用
+※レイアウトファイルは基本流用用 -->
+
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +34,11 @@
                 <ul>
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+                    <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">ログアウト</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>
                 </ul>
             </div>
         </div>
