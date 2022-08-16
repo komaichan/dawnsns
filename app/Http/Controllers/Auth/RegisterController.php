@@ -52,26 +52,26 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required|between:min4,max12'],
-            'mail' => ['required|email|between:min4,max12|unique:users'],
-            'password' => ['required|between:min4,max12|unique:users|alpha_num'],
-            'password-confirm' => ['required|between:min4,max12|unique:users|confirmed|alpha_num'],
+            'username' => ['required|between:4,12'],
+            'mail' => ['required|email|between:4,12|unique:users'],
+            'password' => ['required|between:4,12|unique:users|alpha_num'],
+            'password-confirm' => ['required|between:4,12|unique:users|confirmed|alpha_num'],
 
         ],
         [
             'username.required' => '入力必須です',
-            'username.between:min4,max12' => '4文字以上12文字以内で入力してください',
+            'username.between' => '4文字以上12文字以内で入力してください',
             'mail.required' => '入力必須です',
             'mail.email' => 'メールアドレスを入力してください',
-            'mail.between:min4,max12' => '4文字以上12文字以内で入力してください',
-            'mail.unique:users' => '既に登録されているアドレスです',
+            'mail.between' => '4文字以上12文字以内で入力してください',
+            'mail.unique' => '既に登録されているアドレスです',
             'password.required' => '入力必須です',
-            'password.between:min4,max12' => '4文字以上12文字以内で入力してください',
-            'password.unique:users' => '既に登録されているパスワードです',
+            'password.between' => '4文字以上12文字以内で入力してください',
+            'password.unique' => '既に登録されているパスワードです',
             'password.alpha_num' => '使用できるのは英数字のみです',
             'password-confirm.required' => '入力必須です',
-            'password-confirm.between:min4,max12' => '4文字以上12文字以内で入力してください',
-            'password-confirm.unique:users' => '既に登録されているパスワードです',
+            'password-confirm.between' => '4文字以上12文字以内で入力してください',
+            'password-confirm.unique' => '既に登録されているパスワードです',
             'password-confirm.confirmed' => 'パスワードが一致しません',
             'password-confirm.alpha_num' => '使用できるのは英数字のみです',
 
