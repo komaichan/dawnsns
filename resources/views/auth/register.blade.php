@@ -9,7 +9,8 @@
 
 {!! Form::open() !!}
 
-<h2>新規ユーザー登録</h2>
+<div class="login-top">
+<h2 class="headline">新規ユーザー登録</h2>
 
 <div class="user-register">
 
@@ -35,29 +36,33 @@
     @endif
 </div>
 
-<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-{{ Form::label('Password') }}
-{{ Form::password('password',null,['class' => 'input']) }}
-    @if ($errors->has('password'))
-        <span class="help-block">
-        <strong>{{ $errors->first('password') }}</strong>
-        </span>
-    @endif
+<div class="password-form">
+    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+    {{ Form::label('Password') }}
+    {{ Form::password('password',null,['class' => 'input']) }}
+        @if ($errors->has('password'))
+            <span class="help-block">
+            <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
+    </div>
+
+    <div class="form-group{{ $errors->has('password-confirm') ? ' has-error' : '' }}">
+    {{ Form::label('Password confirm') }}
+    {{ Form::password('password-confirm',null,['class' => 'input']) }}
+        @if ($errors->has('password-confirm'))
+            <span class="help-block">
+            <strong>{{ $errors->first('password-confirm') }}</strong>
+            </span>
+        @endif
+    </div>
 </div>
 
-<div class="form-group{{ $errors->has('password-confirm') ? ' has-error' : '' }}">
-{{ Form::label('Password confirm') }}
-{{ Form::password('password-confirm',null,['class' => 'input']) }}
-    @if ($errors->has('password-confirm'))
-        <span class="help-block">
-        <strong>{{ $errors->first('password-confirm') }}</strong>
-        </span>
-    @endif
-</div>
+<span class="flex">
+    {{ Form::submit('REGISTER', ['class' => 'button']) }}
+</span>
 
-{{ Form::submit('REGISTER') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
+<p class="under"><a href="/login">ログイン画面へ戻る</a></p>
 
 </div>
 

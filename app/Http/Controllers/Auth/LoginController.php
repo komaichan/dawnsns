@@ -39,16 +39,16 @@ class LoginController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'mail' => ['required|email|between:min4,max12|unique:users'],
-            'password' => ['required|between:min4,max12|unique:users|alpha_num'],
+            'mail' => ['required|email|between:4,12|unique:users'],
+            'password' => ['required|between:4,12|unique:users|alpha_num'],
         ],
         [
             'mail.required' => '入力必須です',
             'mail.email' => 'メールアドレスを入力してください',
-            'mail.between:min4,max12' => '4文字以上12文字以内で入力してください',
+            'mail.between' => '4文字以上12文字以内で入力してください',
             'password.required' => '入力必須です',
-            'password.between:min4,max12' => '4文字以上12文字以内で入力してください',
-            'password.unique:users' => '既に登録されているパスワードです',
+            'password.between' => '4文字以上12文字以内で入力してください',
+            'password.unique' => '既に登録されているパスワードです',
             'password.alpha_num' => '使用できるのは英数字のみです'
         ]
     );
@@ -63,6 +63,8 @@ class LoginController extends Controller
         if($request->isMethod('post')){
 
             $data=$request->only('mail','password');
+
+            $this-validator($data)->validate();
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){

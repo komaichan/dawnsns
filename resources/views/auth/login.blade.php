@@ -1,11 +1,13 @@
 @extends('layouts.logout')
 
+<!-- <p>Social Network Service</p> -->
+
 @section('content')
 
 {!! Form::open() !!}
 
 <div class="login-top">
-<p class="headline">DAWNSNSへようこそ</p>
+<h2 class="headline">DAWNSNSへようこそ</h2>
 
 {{ csrf_field() }}
 

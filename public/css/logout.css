@@ -13,6 +13,7 @@ body {
     /* mix-blend-mode: darken;
     opacity: 1; */
 
+
 }
 
 a {
@@ -72,6 +73,7 @@ a {
 .login-form label {
     display: block;
     margin: 0 auto;
+    pointer-events: none;
 }
 
 .login-form .input {
@@ -80,6 +82,8 @@ a {
     background: #FFFEFE;
     border-radius: 6px;
     margin: 5px 0 15px;
+    padding-left: 4px;
+    color: #3C4767;
 }
 
 
@@ -100,4 +104,54 @@ a {
     font-size: 12px;
     text-align: center;
     padding-top: 32px;
+}
+
+
+
+/* register */
+
+.user-register {
+    width: 230px;
+    padding: 30px 0 15px;
+    margin: 0 auto;
+}
+
+.user-register label {
+    display: block;
+    margin: 0 auto;
+    pointer-events: none;
+}
+
+.user-register .input {
+    width: 100%;
+    height: 30px;
+    background: #FFFEFE;
+    border-radius: 6px;
+    margin: 5px 0 15px;
+    padding-left: 4px;
+    color: #3C4767;
+}
+
+.password-form input {
+    width: 100%;
+    height: 30px;
+    background: #FFFEFE;
+    border-radius: 6px;
+    margin: 5px 0 15px;
+    padding-left: 4px;
+    color: #3C4767;
+}
+
+.user-register .button {
+    display: block;
+    background: #4B71CAb3;
+    padding: 8px 28px 5px;
+    border-radius: 6px;
+    letter-spacing: 1.4px;
+}
+
+.user-register .under {
+    font-size: 12px;
+    text-align: center;
+    padding-top: 58px;
 }

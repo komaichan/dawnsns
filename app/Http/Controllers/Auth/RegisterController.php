@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'username' => ['required|between:4,12'],
             'mail' => ['required|email|between:4,12|unique:users'],
             'password' => ['required|between:4,12|unique:users|alpha_num'],
-            'password-confirm' => ['required|between:4,12|unique:users|confirmed|alpha_num'],
+            'password-confirm' => ['required|between:4,12|unique:users|confirmed:password|alpha_num'],
 
         ],
         [
