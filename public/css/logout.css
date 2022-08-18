@@ -127,7 +127,7 @@ a {
     height: 30px;
     background: #FFFEFE;
     border-radius: 6px;
-    margin: 5px 0 15px;
+    margin-top: 5px;
     padding-left: 4px;
     color: #3C4767;
 }
@@ -137,9 +137,20 @@ a {
     height: 30px;
     background: #FFFEFE;
     border-radius: 6px;
-    margin: 5px 0 15px;
+    margin-top: 5px;
     padding-left: 4px;
     color: #3C4767;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.help-block strong {
+    display: block;
+    color: #4BE240;
+    font-weight: normal;
+    padding-top: 5px;
 }
 
 .user-register .button {

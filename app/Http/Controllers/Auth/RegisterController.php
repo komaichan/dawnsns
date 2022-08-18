@@ -52,10 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required|between:4,12'],
-            'mail' => ['required|email|between:4,12|unique:users'],
-            'password' => ['required|between:4,12|unique:users|alpha_num'],
-            'password-confirm' => ['required|between:4,12|unique:users|confirmed:password|alpha_num'],
+            'username' => 'required|between:4,12',
+            'mail' => 'required|email|between:4,12|unique:users',
+            'password' => 'required|between:4,12|unique:users|alpha_num',
+            'password-confirm' => 'required|between:4,12|unique:users|confirmed:password|alpha_num',
 
         ],
         [
@@ -102,7 +102,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 
-            $this-validator($data)->validate();
+            $this->validator($data)->validate();
             $this->create($data);
             return redirect('added');
         }

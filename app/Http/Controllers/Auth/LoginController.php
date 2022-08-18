@@ -39,8 +39,8 @@ class LoginController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'mail' => ['required|email|between:4,12|unique:users'],
-            'password' => ['required|between:4,12|unique:users|alpha_num'],
+            'mail' => 'required|email|between:4,12|unique:users',
+            'password' => 'required|between:4,12|unique:users|alpha_num',
         ],
         [
             'mail.required' => '入力必須です',
@@ -64,7 +64,7 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
 
-            $this-validator($data)->validate();
+            $this->validator($data)->validate();
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
