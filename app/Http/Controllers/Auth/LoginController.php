@@ -64,7 +64,7 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
 
-            $this->validator($data)->validate();
+            $this->validator($data);
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){

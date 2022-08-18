@@ -102,7 +102,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 
-            $this->validator($data)->validate();
+            $this->validator($data);
             $this->create($data);
             return redirect('added');
         }
