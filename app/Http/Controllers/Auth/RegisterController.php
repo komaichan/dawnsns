@@ -104,7 +104,7 @@ class RegisterController extends Controller
 
             $this->validator($data);
             $this->create($data);
-            return redirect('added');
+            return redirect('added')->with(compact($data));
         }
         return view('auth.register');
     }
