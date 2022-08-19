@@ -166,3 +166,38 @@ a {
     text-align: center;
     padding-top: 58px;
 }
+
+
+/* addedレイアウト */
+
+#clear {
+    width: 238px;
+    padding: 29px 0 40px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.added-username {
+    font-size: 18px;
+}
+
+.added-welcome {
+    text-align: center;
+}
+
+#clear .flex {
+    display: flex;
+    justify-content: center;
+}
+
+.added-p {
+    padding: 27px 0 33px;
+}
+
+#clear a {
+    display: inline-block;
+    background: #4B71CAb3;
+    padding: 7px 28px 5px;
+    border-radius: 6px;
+    letter-spacing: 1.4px;
+}

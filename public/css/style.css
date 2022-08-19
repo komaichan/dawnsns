@@ -11,6 +11,7 @@ body {
 /* header */
 header {
     background: #3C4767;
+    height: 75px;
 }
 
 /* main content */
@@ -26,4 +27,128 @@ header {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
+}
+
+#head {
+    padding: 0 41px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#head .top-logo {
+    width: 154px;
+    height: 100%;
+}
+
+#head .top-logo a,
+#head .top-logo img {
+    display: block;
+    width: 100%;
+    line-height: 0;
+}
+
+
+/* 右側メニュー */
+
+#user-menu {
+    color: #FFFFFF;
+    padding: 20px 0;
+}
+
+#user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#user .name {
+    display: inline;
+    vertical-align: middle;
+    margin-right: 9.75px;
+}
+
+#user img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 17.82px;
+}
+
+.menu-trigger {
+    position: relative;
+    width: 10.43px;
+    height: 8.59px;
+    cursor: pointer;
+}
+
+.menu-trigger span {
+    display: block;
+    position: absolute;
+    width: 10.43px;
+    border-bottom: solid 1px #fff;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-trigger span:nth-child(1) {
+    top: 4px;
+    transform: rotate(-60deg);
+    left: 23.5%;
+}
+
+.menu-trigger span:nth-child(2) {
+    top: 4px;
+    transform: rotate(60deg);
+    left: -19.5%;
+}
+
+.menu-trigger.active span:nth-child(1) {
+    top: 4px;
+    transform: rotate(60deg);
+    left: 23.5%;
+}
+
+.menu-trigger.active span:nth-child(2) {
+    top: 4px;
+    transform: rotate(-60deg);
+    left: -19.5%;
+}
+
+/* menu */
+
+.user-nav {
+    display: none;
+    z-index: 2;
+}
+
+.user-nav.active {
+    display: block;
+    transform: translateY(0%);
+    height: 237.1px;
+    z-index: 2;
+}
+
+.nav-wrapper {
+    margin: 0 0 0 auto;
+    width: 270px;
+}
+
+.nav-wrapper li {
+    border: solid 1px #6C6C6C;
+    color: #6C6C6C;
+    margin: 0 0 -1px;
+    font-size: 18px;
+}
+
+.nav-wrapper li a {
+    display: block;
+    padding: 28.5px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-wrapper li a:hover {
+    background-color: #E2563B;
+    color: #FFFFFF;
+    transition: 0.5s;
 }

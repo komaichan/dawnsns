@@ -9,9 +9,11 @@
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
-    <title></title>
+    <title>DAWNSNS</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -26,23 +28,35 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="images/arrow.png"></p>
+            <h1 class ="top-logo">
+                <a href="/top"><img src="images/main_logo.png"></a>
+            </h1>
+            <div id="user-menu">
+                <div id="user">
+                    <p class="name"><?php $user = Auth::user(); ?>{{ $user->username }} さん</p>
+
+                    <div class="menu-trigger">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <img src="images/dawn.png">
                 <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">ログアウト</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                    </form>
-                </ul>
             </div>
         </div>
     </header>
+
+                    <nav class="user-nav">
+                        <div class="nav-wrapper">
+                            <ul>
+                                <li><a href="/top">HOME</a></li>
+                                <li><a href="/profile">プロフィール編集</a></li>
+                                <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}</form>
+                            </ul>
+                        </div>
+                    </nav>
+
     <div id="row">
         <div id="container">
             @yield('content')
