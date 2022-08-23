@@ -45,17 +45,19 @@
         </div>
     </header>
 
-                    <nav class="user-nav">
-                        <div class="nav-wrapper">
-                            <ul>
-                                <li><a href="/top">HOME</a></li>
-                                <li><a href="/profile">プロフィール編集</a></li>
-                                <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}</form>
-                            </ul>
-                        </div>
-                    </nav>
+        <nav class="user-nav">
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="/top">HOME</a></li>
+                    <li><a href="/profile">プロフィール編集</a></li>
+                    <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">ログアウト</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>
+                </ul>
+            </div>
+        </nav>
 
     <div id="row">
         <div id="container">
@@ -63,7 +65,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>

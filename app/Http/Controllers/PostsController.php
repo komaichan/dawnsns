@@ -15,4 +15,24 @@ class PostsController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+
+       public function create(Request $request)
+    {
+        $post = $request->input('newPost');
+        DB::table('posts')->insert([
+            'post' => $post
+        ]);
+
+        return redirect('/top');
+    }
+
+    // public function updateForm()
+    // {
+    //     $post = DB::table('posts')
+    //         ->where('id', 1)
+    //         ->first();
+    //     return view('posts.updateForm', compact('post'));
+    // }
 }

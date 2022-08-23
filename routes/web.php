@@ -24,7 +24,7 @@ Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
 
-// Route::post('auth/logout-form', 'Auth\LoginController@auth.login');
+Route::get('/logout', 'Auth\LoginController@auth.login');
 
 
 
@@ -46,3 +46,25 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+
+//----- create -----
+
+Route::get('post/create-form', 'PostsController@createForm');
+// 　①…「追加」ボタンはGET通信。
+// 　②…URLは「post/create-form」になる。
+// 　③…今回は「PostsController.php」の「function createForm」を経由したい。
+Route::post('post/create', 'PostsController@create');
+//   {!! Form::open(['url' => 'post/create']) !!}のurlを第1引数に指定
+// 　public function createを第2引数において実行
+
+
+
+//----- post編集-----
+// Route::get('post/{id}/update-form', 'PostsController@updateForm');
+// Route::post('post/update', 'PostsController@update');
+
+
+// //----- post delete -----
+
+// Route::get('/post/{id}/delete', 'PostsController@delete');

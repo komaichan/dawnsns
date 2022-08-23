@@ -118,14 +118,14 @@ header {
 
 .user-nav {
     display: none;
-    z-index: 2;
+    position: absolute;
+    right: 0;
 }
 
 .user-nav.active {
     display: block;
     transform: translateY(0%);
     height: 237.1px;
-    z-index: 2;
 }
 
 .nav-wrapper {
@@ -136,6 +136,7 @@ header {
 .nav-wrapper li {
     border: solid 1px #6C6C6C;
     color: #6C6C6C;
+    background-color: #fff;
     margin: 0 0 -1px;
     font-size: 18px;
 }
@@ -151,4 +152,54 @@ header {
     background-color: #E2563B;
     color: #FFFFFF;
     transition: 0.5s;
+}
+
+
+
+
+/* 投稿フォーム */
+
+.post-container {
+    border-bottom: #D7D7D7 solid 5px;
+    height: 108px;
+    width: 100%;
+}
+
+.post {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 12.5px 200px 12.5px 17px;
+}
+
+.form-group {
+    height: 100%;
+}
+
+.post .icon-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.form-group .form-control {
+    height: 100%;
+    width: 600px;
+    padding: 5px;
+}
+
+.form-group .form-control:focus {
+    outline: #3C4767 1px solid;
+}
+
+
+.post .post-btn {
+    height: 100%;
+    align-items: flex-end;
+
+}
+
+.post .post-btn img {
+    align-items: flex-end;
 }
