@@ -15,7 +15,7 @@ class PostsTableSeeder extends Seeder
             [
                 'id' => '2',
                 'user_id' => '2',
-                'posts' => 'test',
+                'posts' => 'つぶやいた内容を表示します。',
                 'created_at' => '2022-08-23 00:00:00',
                 'updated_at' => '2022-08-23 00:00:00',
             ],

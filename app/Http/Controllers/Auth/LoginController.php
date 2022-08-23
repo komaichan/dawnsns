@@ -74,9 +74,10 @@ class LoginController extends Controller
         return view("auth.login");
     }
 
-    // protected function loggedOut(\Illuminate\Http\Request $request) {
-    //   return redirect('login');
-    // }
+    protected function loggedOut(\Illuminate\Http\Request $request) {
+      return redirect('login');
+    }
+    // ログアウト機能（web.phpと連携)
 
 
 }
