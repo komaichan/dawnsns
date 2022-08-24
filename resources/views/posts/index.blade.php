@@ -17,6 +17,9 @@
       <img class="icon-img" src="images/{{ Auth::user()->images }}">
       {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
     </div>
+
+    {!! Form::hidden('') !!}
+
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
   </div>
 </div>
