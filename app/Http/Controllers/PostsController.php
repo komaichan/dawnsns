@@ -4,13 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
+// ↑Auth使えるようにするよ
 
 class PostsController extends Controller
 {
     //
     public function index(){
-        return view('posts.index');
+        $posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->get();
+        return view('posts.index', compact('posts'));
     }
+    // topにuserの情報をpostに乗っける
+
+
+
 
     public function __construct()
     {
@@ -23,7 +33,7 @@ class PostsController extends Controller
     {
         $post = $request->input('newPost');
         DB::table('posts')->insert([
-            'post' => $post
+            'posts' => $post
         ]);
 
         return redirect('/top');

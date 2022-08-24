@@ -14,19 +14,27 @@
 
   <div class="post">
     <div class="form-group">
-      <img class="icon-img" src="images/dawn.png">
+      <img class="icon-img" src="images/{{ Auth::user()->images }}">
       {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
     </div>
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
   </div>
 </div>
+
+
 {!! Form::close() !!}
 
       @foreach ($posts as $post)
-      <tr>
-        <td>{{ $post->id }}</td>
-        <td>{{ $post->post }}</td>
-        <td>{{ $post->created_at }}</td>
+      <div class="tweet-list">
+            <img src="/images/{{ $post->images }}" alt="icon">
+          <div class="tweet-column">
+              <div class="tweet-time">
+                <p>{{ $post->username }}</p>
+                <p>{{ $post->created_at }}</p>
+              </div>
+              <p class="tweet">{{ $post->posts }}</p>
+          </div>
+      </div>
 
       @endforeach
 

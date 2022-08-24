@@ -20,12 +20,10 @@ Auth::routes();
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
 
-Route::get('/logout', 'Auth\LoginController@login')->name('login');
-// ↑ログアウト機能(loginControllerと連携)
 
 
 
