@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id')->autoIncrement();
             $table->integer('user_id');
             $table->string('posts',150);
-            $table->timestamps();
+            $table->timestamps()->default('current_timestamp')->option('on update current_timestamp');
         });
     }
 

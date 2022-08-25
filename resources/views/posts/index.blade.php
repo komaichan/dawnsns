@@ -18,8 +18,6 @@
       {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
     </div>
 
-    {!! Form::hidden('{{ Auth::$user->id }}') !!}
-
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
   </div>
 </div>
