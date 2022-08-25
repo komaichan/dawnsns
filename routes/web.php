@@ -60,6 +60,6 @@ Route::post('post/create', 'PostsController@create');
 // Route::post('post/update', 'PostsController@update');
 
 
-// //----- post delete -----
+//----- post delete -----
 
-// Route::get('/post/{id}/delete', 'PostsController@delete');
+Route::get('/post/{id}/delete', 'PostsController@delete');

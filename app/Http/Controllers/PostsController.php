@@ -31,9 +31,10 @@ class PostsController extends Controller
 
        public function create(Request $request)
     {
-        $post = $request->input('newPost');
+        $post = $request->input('newPost','id');
         DB::table('posts')->insert([
-            'posts' => $post
+            'newPost' => $post['posts'],
+            'id' => $post['user_id']
         ]);
 
         return redirect('/top');
@@ -46,4 +47,13 @@ class PostsController extends Controller
     //         ->first();
     //     return view('posts.updateForm', compact('post'));
     // }
+
+    public function delete($id)
+    {
+        DB::table('posts')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect('/top');
+    }
 }

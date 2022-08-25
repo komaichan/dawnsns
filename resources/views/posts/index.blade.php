@@ -18,7 +18,7 @@
       {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
     </div>
 
-    {!! Form::hidden('{{ $user->id }}') !!}
+    {!! Form::hidden('{{ Auth::$user->id }}') !!}
 
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
   </div>
@@ -27,9 +27,10 @@
 
 {!! Form::close() !!}
 
-      @foreach ($posts as $post)
+    @foreach ($posts as $post)
+    <div class="tweet-container">
       <div class="tweet-list">
-            <img src="/images/{{ $post->images }}" alt="icon">
+            <img class="icon" src="/images/{{ $post->images }}" alt="icon">
           <div class="tweet-column">
               <div class="tweet-time">
                 <p>{{ $post->username }}</p>
@@ -39,7 +40,16 @@
           </div>
       </div>
 
-      @endforeach
+
+      <div class="edit-trash">
+            <img class="edit" src="images/edit.png" alt="edit">
+            <a class="trash" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"></a>
+      </div>
+
+    </div>
+
+
+    @endforeach
 
 
 
