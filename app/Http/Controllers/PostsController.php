@@ -31,10 +31,12 @@ class PostsController extends Controller
 
        public function create(Request $request)
     {
-        $post = $request->input('newPost','id');
+        $post = $request->input('newPost');
+        $id = Auth::id();
+
         DB::table('posts')->insert([
-            'newPost' => $post['posts'],
-            'id' => $post['user_id']
+            'posts' => $post,
+            'user_id' => $id
         ]);
 
         return redirect('/top');
