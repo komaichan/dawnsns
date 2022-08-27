@@ -40,7 +40,7 @@
 
 
       <div class="edit-trash">
-            <img class="edit" src="images/edit.png" alt="edit">
+            <a class="edit" href="/post/{{ $post->id }}/update-form"><img class="edit" src="images/edit.png" alt="edit"></a>
             <a class="trash" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"></a>
       </div>
 
@@ -48,6 +48,12 @@
 
 
     @endforeach
+
+
+
+
+
+
 
 
 

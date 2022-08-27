@@ -42,13 +42,29 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
-    // public function updateForm()
-    // {
-    //     $post = DB::table('posts')
-    //         ->where('id', 1)
-    //         ->first();
-    //     return view('posts.updateForm', compact('post'));
-    // }
+
+        public function updateForm($id)
+    {
+        $post = DB::table('posts')
+            ->where('id', $id)
+        // 取得するレコードの条件を指定する
+            ->first();
+        // 複数のデータを取得するget ≠ 1行のデータのみを取得するfirst
+        return view('posts.updateForm',['post'=>$post]);
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        DB::table('posts')
+        ->where('id', $id)
+        ->update(
+            ['post' => $up_post]
+        );
+
+        return redirect('/top');
+    }
 
     public function delete($id)
     {

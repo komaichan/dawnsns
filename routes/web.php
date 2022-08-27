@@ -56,8 +56,8 @@ Route::post('post/create', 'PostsController@create');
 
 
 //----- post編集-----
-// Route::get('post/{id}/update-form', 'PostsController@updateForm');
-// Route::post('post/update', 'PostsController@update');
+Route::get('post/{id}/update-form', 'PostsController@updateForm');
+Route::post('post/update', 'PostsController@update');
 
 
 //----- post delete -----

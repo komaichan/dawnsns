@@ -308,3 +308,12 @@ header {
 .trash:hover {
     background-image: url(../images/trash_h.png);
 }
+
+
+
+/* edit 編集画面 */
+
+#edit {
+    background-color: #0000004D;
+    z-index: 2;
+}
