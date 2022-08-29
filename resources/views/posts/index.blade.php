@@ -41,6 +41,24 @@
 
       <div class="edit-trash">
             <a class="edit" href="/post/{{ $post->id }}/update-form"><img class="edit" src="images/edit.png" alt="edit"></a>
+            {!! Form::open(['url' => 'post/edit']) !!}
+              <div class="edit-form">
+              {!! Form::hidden('id', $post->id) !!}
+              {!! Form::input('textarea', 'editPost', $post->posts, ['required', 'class' => 'form-control']) !!}
+              <button type="submit" class="post-btn"><img src="images/edit.png"></button>
+              </div>
+            {!! Form::close() !!}
+
+
+
+
+
+
+
+
+
+
+
             <a class="trash" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"></a>
       </div>
 
@@ -48,11 +66,6 @@
 
 
     @endforeach
-
-
-
-
-
 
 
 
