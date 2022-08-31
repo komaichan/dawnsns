@@ -16,3 +16,13 @@ $(function () {
 });
 
 
+/* モーダル（編集画面表示） */
+
+$(function () { //①
+  $('.edit').each(function () {
+    $(this).on('click', function () {
+      $('.edit-trash form').fadeIn();
+      return false;
+    });
+  });
+});

@@ -39,7 +39,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <img src="images/dawn.png">
+                    <img src="{{ Auth::user()->images }}">
                 <div>
             </div>
         </div>
@@ -62,6 +62,7 @@
     <div id="row">
         <div id="container">
             @yield('content')
+            <!-- index,search,followなどの内容が入る -->
         </div >
         <div id="side-bar">
             <div id="confirm">
@@ -77,7 +78,7 @@
                 </div>
                     <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn search-btn"><a href="">ユーザー検索</a></p>
+            <p class="btn search-btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
