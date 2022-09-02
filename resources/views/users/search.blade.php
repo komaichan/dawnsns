@@ -8,7 +8,7 @@
   {{ csrf_field()}}
   {{method_field('get')}}
 
-  {!! Form::input('text', 'search', null, ['required','value' => '{{ $search }}', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
+  {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
   <button type="submit" class="post-btn"><img src="images/post.png"></button>
 
 </div>

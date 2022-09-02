@@ -26,12 +26,14 @@ class UsersController extends Controller
     public function searchForm(Request $request){
         $search = $request->input('search');
 
-        $user = Auth::user();
+        $query = User::query();
 
         if(!empty($search)) {
-            $user->where('username', 'LIKE', '%{search}%');
-        };
-        return redirect('users.search', compact('search'));
+            $query->where('username', 'LIKE', '%{search}%');
+
+            $users = $query;
+        }
+        return redirect('users.search', compact('users'));
     }
 
 }
