@@ -2,12 +2,17 @@
 
 @section('content')
 
-<div class="search-container">
 
-  {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
+{!! Form::open(['url' => 'user/search-form']) !!}
+<div class="search-container">
+  {{ csrf_field()}}
+  {{method_field('get')}}
+
+  {!! Form::input('text', 'search', null, ['required','value' => '{{ $search }}', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
   <button type="submit" class="post-btn"><img src="images/post.png"></button>
 
 </div>
+{!! Form::close() !!}
 
 
 
@@ -20,7 +25,6 @@
 
   <button>フォローする</button>
 </div>
-
 
 @endforeach
 

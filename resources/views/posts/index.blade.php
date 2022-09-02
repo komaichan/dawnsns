@@ -14,7 +14,7 @@
 
   <div class="post">
     <div class="form-group">
-      <img class="icon-img" src="images/{{ Auth::user()->images }}">
+      <img class="icon-img" src="./images/{{ Auth::user()->images }}">
       {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
     </div>
 
@@ -28,7 +28,7 @@
     @foreach ($posts as $post)
     <div class="tweet-container">
       <div class="tweet-list">
-            <img class="icon" src="/images/{{ $post->images }}" alt="icon">
+            <img class="icon" src="./images/{{ $post->images }}" alt="icon">
           <div class="tweet-column">
               <div class="tweet-time">
                 <p>{{ $post->username }}</p>

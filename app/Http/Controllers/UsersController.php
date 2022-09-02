@@ -22,4 +22,16 @@ class UsersController extends Controller
         return view('users.search', compact('users'));
     }
 
+
+    public function searchForm(Request $request){
+        $search = $request->input('search');
+
+        $user = Auth::user();
+
+        if(!empty($search)) {
+            $user->where('username', 'LIKE', '%{search}%');
+        };
+        return redirect('users.search', compact('search'));
+    }
+
 }

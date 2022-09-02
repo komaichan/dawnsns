@@ -41,7 +41,13 @@ Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
 
+
+//　検索
 Route::get('/search','UsersController@search');
+
+Route::get('user/search-form','UsersController@searchForm');
+
+
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
