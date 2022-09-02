@@ -6,12 +6,14 @@
 {!! Form::open(['url' => 'user/search-form']) !!}
 <div class="search-container">
   {{ csrf_field()}}
-  {{method_field('get')}}
+
+  @if(isset($search))
 
   {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
   <button type="submit" class="post-btn"><img src="images/post.png"></button>
 
 </div>
+@endif
 {!! Form::close() !!}
 
 

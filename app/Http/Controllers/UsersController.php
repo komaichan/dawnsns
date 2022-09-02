@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Users;
 use Auth;
 
 
@@ -26,14 +27,17 @@ class UsersController extends Controller
     public function searchForm(Request $request){
         $search = $request->input('search');
 
-        $query = User::query();
+        $query = Users::query();
 
         if(!empty($search)) {
-            $query->where('username', 'LIKE', '%{search}%');
+            $query->where('username', 'like', '%'.$value.'%');
 
             $users = $query;
         }
-        return redirect('users.search', compact('users'));
+        return redirect('users.search')
+        ->with([
+                'users' => $users,
+                'search' => $search,]);
     }
 
 }
