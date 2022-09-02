@@ -45,7 +45,7 @@ Route::get('/profile','UsersController@profile');
 //　検索
 Route::get('/search','UsersController@search');
 
-Route::get('user/search-form','UsersController@searchForm');
+Route::post('user/search-form','UsersController@searchForm');
 
 
 

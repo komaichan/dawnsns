@@ -3,18 +3,17 @@
 @section('content')
 
 
-{!! Form::open(['url' => 'user/search-form']) !!}
 <div class="search-container">
-  {{ csrf_field()}}
 
-  @if(isset($search))
+  {!! Form::open(['url' => 'user/search-form']) !!}
+  {{ csrf_field()}}
 
   {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
   <button type="submit" class="post-btn"><img src="images/post.png"></button>
 
+  {!! Form::close() !!}
+
 </div>
-@endif
-{!! Form::close() !!}
 
 
 
