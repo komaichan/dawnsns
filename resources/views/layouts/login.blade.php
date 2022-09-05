@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title>DAWNSNS</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
     <!--スマホ,タブレット対応-->
@@ -29,7 +29,7 @@
     <header>
         <div id = "head">
             <h1 class ="top-logo">
-                <a href="/top"><img src="images/main_logo.png"></a>
+                <a href="/top"><img src="{{ asset('images/main_logo.png') }}"></a>
             </h1>
             <div id="user-menu">
                 <div id="user">
@@ -39,7 +39,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <img src="{{ Auth::user()->images }}">
+                    <img src="{{ asset('images/' . Auth::user()->images) }}">
                 <div>
             </div>
         </div>

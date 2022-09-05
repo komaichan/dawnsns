@@ -18,7 +18,7 @@ class UsersController extends Controller
     }
     public function search(){
         $users = DB::table('users')
-        ->select('users.username', 'users.images')
+        ->select('users.username', 'users.images', 'users.id')
         ->get();
         return view('users.search', compact('users'));
     }
@@ -35,10 +35,9 @@ class UsersController extends Controller
 
         if(!empty($search)) {
             $query->where('username', 'like', '%'.$search.'%');
-
-            $users = $query;
         }
-        return redirect('users.search')
+        $users = $query->get();
+        return view('users.search')
         ->with([
                 'users' => $users,
                 'search' => $search,]);

@@ -15,7 +15,7 @@
   <div class="post">
     <div class="form-group">
       <img class="icon-img" src="./images/{{ Auth::user()->images }}">
-      {!! Form::input('textarea', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？', 'maxlength' => 150, 'autocomplete' => 'off'] ) !!}
+      <textarea name="newPost" required class="form-control" placeholder="何をつぶやこうか…？"></textarea>
     </div>
 
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
@@ -39,6 +39,7 @@
       </div>
 
 
+      @if($post->user_id === Auth::user()->id)
       <div class="edit-trash">
             <a href class="edit-link"><img class="edit" src="images/edit.png" alt="edit"></a>
             {!! Form::open(['url' => 'post/edit']) !!}
@@ -53,6 +54,7 @@
 
             <a class="trash" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"></a>
       </div>
+      @endif
 
     </div>
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use Auth;
 
 class FollowsController extends Controller
 {
@@ -12,5 +15,26 @@ class FollowsController extends Controller
     }
     public function followerList(){
         return view('follows.followerList');
+    }
+
+
+    public function follow(Request $request) {
+        $id = Auth::id();
+        $user_id = $request->input('id');
+
+        DB::table('follows')->insert([
+        'follow' => $user_id,
+        'follower' => $id
+        ]);
+
+        return redirect('/');
+    }
+
+    public function remove(Request $request) {
+        DB::table('follows')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect('/');
     }
 }

@@ -9,7 +9,7 @@
   {{ csrf_field()}}
 
   {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
-  <button type="submit" class="post-btn"><img src="images/post.png"></button>
+  <button type="submit" class="post-btn"><img src="{{ asset('images/post.png') }}"></button>
 
   {!! Form::close() !!}
 
@@ -18,13 +18,32 @@
 
 
 @foreach ($users as $user)
+
 <div class="user-list">
   <div class="user-container">
     <img class="icon" src="/images/{{ $user->images }}" alt="icon">
     <p>{{ $user->username }}</p>
   </div>
 
+
+  @if(Auth::user()->id === DB::table('follows')->select('follower'))
+
+  {!! Form::open(['url' => '/remove']) !!}
+  {!! Form::hidden('id', $user->id) !!}
+  {{ csrf_field()}}
+  <button>フォローをはずす</button>
+  {!! Form::close() !!}
+
+
+  @else
+
+  {!! Form::open(['url' => '/follow']) !!}
+  {!! Form::hidden('id', $user->id) !!}
+  {{ csrf_field()}}
   <button>フォローする</button>
+  {!! Form::close() !!}
+
+  @endif
 </div>
 
 @endforeach

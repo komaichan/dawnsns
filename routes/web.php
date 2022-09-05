@@ -48,9 +48,13 @@ Route::get('/search','UsersController@search');
 Route::post('user/search-form','UsersController@searchForm');
 
 
-
+// フォロー関連
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+Route::post('/remove', 'FollowsController@remove');
+Route::post('/follow', 'FollowsController@follow');
+
 
 
 //----- post create -----
