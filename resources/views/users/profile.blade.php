@@ -7,7 +7,7 @@
 <table>
   <tr>
     <th>UserName</th>
-    <td>{!! Form::input('text', 'username', ['required', 'placeholder' => {{ $user->username }}] ) !!}</td>
+    <td>{{ Form::text('placeholder' => {{ Auth:user()->username }}) }}</td>
   </tr>
   <tr>
     <th>MailAdress</th>

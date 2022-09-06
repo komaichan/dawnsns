@@ -14,6 +14,8 @@ class UsersController extends Controller
 {
     //
     public function profile(){
+        $user = DB::table('users')
+        ->get();
         return view('users.profile');
     }
     public function search(){
