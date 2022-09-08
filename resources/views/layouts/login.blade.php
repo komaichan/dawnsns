@@ -51,7 +51,7 @@
                     <li><a href="/top">HOME</a></li>
                     <li><a href="/profile">プロフィール編集</a></li>
                     <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">ログアウト</a>
+                     document.getElementById('logout-form').submit();">ログアウト</a></li>
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                     </form>

@@ -407,3 +407,75 @@ header {
 
 
 /* プロフィール */
+#profile {
+    display: flex;
+    margin: 39px auto auto 116px;
+}
+
+#profile img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 27px;
+}
+
+.profile-update,
+.profile-update th {
+    font-size: 20px;
+    font-weight: normal;
+    color: #6C6C6C;
+}
+
+.profile-table {
+    margin-top: 10px;
+}
+
+.profile-table tr {
+    margin-bottom: 37px;
+    display: block;
+}
+
+.profile-table th {
+    width: 197px;
+}
+
+.profile-table td {
+    background-color: #F2F2F2;
+    border-bottom: 1px #707070 solid;
+    width: 280px;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.profile-form:focus {
+    outline: none;
+}
+
+.profile-table .bio {
+    font-size: 14px;
+    height: 72px;
+    resize: none;
+}
+
+.profile-table .profile-image {
+    font-size: 14px;
+    width: 326px;
+    height: 110px;
+    padding-top: 45px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.profile-image input {
+    display: none;
+}
+
+.profile-btn {
+    background-color: #7B9979;
+    border-radius: 5px;
+    color: #fff;
+    padding: 11px 52px;
+}

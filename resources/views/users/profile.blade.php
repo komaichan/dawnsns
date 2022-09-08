@@ -2,35 +2,46 @@
 
 @section('content')
 
-<img class="icon-img" src="./images/{{ Auth::user()->images }}">
+<div id="profile">
+  <img class="icon-img" src="./images/{{ Auth::user()->images }}">
 
-<table>
-  <tr>
-    <th>UserName</th>
-    <td>{!! Form::input('text', 'editPost', Auth::user()->username, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
-  </tr>
-  <tr>
-    <th>MailAddress</th>
-    <td>{!! Form::input('text', 'editPost', Auth::user()->mail, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
-  </tr>
-  <tr>
-    <th>Password</th>
-    <td>{!! Form::input('text', 'editPost', Auth::user()->password, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
-  </tr>
-  <tr>
-    <th>new Password</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>Bio</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>Icon Image</th>
-    <td></td>
-  </tr>
-</table>
+  <div class="profile-update">
+    {!! Form::open(['url' => 'profile/update']) !!}
 
+    <table class="profile-table">
+      <tr>
+        <th>UserName</th>
+        <td>{{ Form::text('username', Auth::user()->username, ['required', 'class' => 'profile-form','autocomplete' => 'off']) }}</td>
+      </tr>
+      <tr>
+        <th>MailAddress</th>
+        <td>{{ Form::text('mail', Auth::user()->mail, ['required', 'class' => 'profile-form','autocomplete' => 'off']) }}</td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td>{!! Form::text('password', Auth::user()->password, ['required', 'class' => 'profile-form','autocomplete' => 'off', 'style' => '-webkit-text-security:disc']) !!}</td>
+      </tr>
+      <tr>
+        <th>new Password</th>
+        <td><input type="password" class="profile-form">
+        </td>
+      </tr>
+      <tr>
+        <th>Bio</th>
+        <td><textarea class="profile-form bio" name="bio" required></textarea></td>
+      </tr>
+      <tr>
+        <th>Icon Image</th>
+        <td><label class="profile-image">ファイルを選択<input type="file" name="file" accept="image/*" multiple></label></td>
+      </tr>
+    </table>
+
+    <button type="submit" class="profile-btn">更 新</button>
+
+    {!! Form::close() !!}
+</div>
+
+</div>
 
 
 
