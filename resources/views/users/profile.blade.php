@@ -7,15 +7,15 @@
 <table>
   <tr>
     <th>UserName</th>
-    <td>{{ Form::text('placeholder' => {{ Auth:user()->username }}) }}</td>
+    <td>{!! Form::input('text', 'editPost', Auth::user()->username, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
   </tr>
   <tr>
-    <th>MailAdress</th>
-    <td></td>
+    <th>MailAddress</th>
+    <td>{!! Form::input('text', 'editPost', Auth::user()->mail, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
   </tr>
   <tr>
     <th>Password</th>
-    <td></td>
+    <td>{!! Form::input('text', 'editPost', Auth::user()->password, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}</td>
   </tr>
   <tr>
     <th>new Password</th>
