@@ -402,7 +402,12 @@ header {
     color: #fff;
     border-radius: 5px;
     padding: 11px 27px;
+    width: 138px;
+}
 
+.user-list .remove-button {
+    background-color: #B95656;
+    padding: 11px 13px;
 }
 
 

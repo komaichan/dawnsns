@@ -20,10 +20,16 @@ class UsersController extends Controller
     }
     public function search(){
         $users = DB::table('users')
-        // ->join('follows', 'users.id' ,'=', 'follows.follower')
+
         ->select('users.username', 'users.images', 'users.id')
         ->get();
-        return view('users.search', compact('users'));
+
+        $followings = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->select('follow')
+        ->get();
+
+        return view('users.search', compact('users', 'followings'));
     }
 
 

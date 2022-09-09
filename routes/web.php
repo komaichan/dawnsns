@@ -52,7 +52,7 @@ Route::post('user/search-form','UsersController@searchForm');
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-Route::post('/remove', 'FollowsController@remove');
+Route::post('/follows/{id}/remove', 'FollowsController@remove');
 Route::post('/follow', 'FollowsController@follow');
 
 

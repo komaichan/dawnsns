@@ -26,12 +26,11 @@
   </div>
 
 
-  @if(Auth::user()->id === DB::table('follows')->select('follower'))
+  @if($followings->contains('follow',$user->id))
 
-  {!! Form::open(['url' => '/remove']) !!}
-  {!! Form::hidden('id', $user->id) !!}
+  {!! Form::open(['url' => '/user/{{ $user->id }}/remove']) !!}
   {{ csrf_field()}}
-  <button>フォローをはずす</button>
+  <button class="remove-button">フォローをはずす</button>
   {!! Form::close() !!}
 
 
@@ -40,7 +39,7 @@
   {!! Form::open(['url' => '/follow']) !!}
   {!! Form::hidden('id', $user->id) !!}
   {{ csrf_field()}}
-  <button>フォローする</button>
+  <button class="follow-button">フォローする</button>
   {!! Form::close() !!}
 
   @endif
