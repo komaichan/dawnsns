@@ -64,7 +64,7 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
 
-            $password = mb_strlen('password');
+            $_SESSION[mb_strlen('password')];
 
             $this->validator($data);
             // ログインが成功したら、トップページへ
