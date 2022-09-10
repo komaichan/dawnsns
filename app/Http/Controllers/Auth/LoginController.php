@@ -64,11 +64,13 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
 
+            $password = mb_strlen('password');
+
             $this->validator($data);
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                return redirect('/top');
+                return redirect('/top', compact('password'));
             }
         }
         return view("auth.login");

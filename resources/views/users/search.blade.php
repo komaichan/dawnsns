@@ -28,7 +28,8 @@
 
   @if($followings->contains('follow',$user->id))
 
-  {!! Form::open(['url' => '/user/{{ $user->id }}/remove']) !!}
+  {!! Form::open(['url' => '/remove']) !!}
+  {!! Form::hidden('id', $user->id) !!}
   {{ csrf_field()}}
   <button class="remove-button">フォローをはずす</button>
   {!! Form::close() !!}

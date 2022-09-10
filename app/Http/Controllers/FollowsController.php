@@ -30,9 +30,10 @@ class FollowsController extends Controller
         return redirect('/search');
     }
 
-    public function remove($id) {
+    public function remove(Request $request) {
         DB::table('follows')
-        ->where('id', $id)
+        ->where('follow', $request->id)
+        ->where('follower', Auth::id())
         ->delete();
 
         return redirect('/search');

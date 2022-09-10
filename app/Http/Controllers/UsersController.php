@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\http\Controllers\LoginController;
 use App\User;
 use Auth;
 
@@ -16,6 +17,9 @@ class UsersController extends Controller
     public function profile(){
         $user = DB::table('users')
         ->get();
+
+        $password = app()->make('App\http\Controllers\LoginController');
+
         return view('users.profile');
     }
     public function search(){

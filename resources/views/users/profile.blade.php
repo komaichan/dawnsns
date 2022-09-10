@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th>Password</th>
-        <td>{!! Form::text('password', Auth::user()->password, ['required', 'class' => 'profile-form','autocomplete' => 'off', 'style' => '-webkit-text-security:disc']) !!}</td>
+        <td>{!! Form::text('password', $password, ['required', 'class' => 'profile-form','autocomplete' => 'off', 'style' => '-webkit-text-security:disc']) !!}</td>
       </tr>
       <tr>
         <th>new Password</th>
