@@ -19,21 +19,21 @@
       </tr>
       <tr>
         <th>Password</th>
-        <td>{!! Form::text('password', $password, ['required', 'class' => 'profile-form','autocomplete' => 'off', 'style' => '-webkit-text-security:disc']) !!}</td>
+        <td>{{ $password }}</td>
       </tr>
       <tr>
         <th>new Password</th>
-        <td><input type="password" class="profile-form" name="newPassword">
+        <td><input type="password" class="profile-form" name="newPassword" null>
         </td>
       </tr>
       <tr>
         <th>Bio</th>
-        <td><input type="textarea" class="profile-form bio" name="bio" required></input></td>
+        <td><input type="textarea" class="profile-form bio" name="bio" null></input></td>
       </tr>
       <tr>
         <th>Icon Image</th>
         <td><div id="profile-image"></div>
-        <input  id="example" type="file" name="file" accept="image/*" multiple></td>
+        <input  id="example" type="file" name="file" accept="image/*" multiple null></td>
       </tr>
     </table>
 

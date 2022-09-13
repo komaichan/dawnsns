@@ -34,7 +34,7 @@ class UsersController extends Controller
         $image = $request->input('file');
 
         DB::table('users')
-        ->where('id', $id)
+        ->where('id', Auth::id())
         ->update(
             ['username' => $username, 'mail' => $mail, 'newPassword' => $newPassword, 'bio' => $bio, 'images' => $image]
         );
