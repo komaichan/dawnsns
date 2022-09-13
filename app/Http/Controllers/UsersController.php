@@ -18,10 +18,33 @@ class UsersController extends Controller
         $user = DB::table('users')
         ->get();
 
-        $password = app()->make('App\http\Controllers\LoginController');
+        // セッションに保存した「passwordCount」を取得
+        $passwordCount = session()->get('passwordCount');
+        // passwordCountの数値の分だけ「●」を繰り返す
+        $password = str_repeat('●', $passwordCount);
 
-        return view('users.profile');
+        return view('users.profile', compact('password'));
     }
+
+    public function update(Request $request){
+        $username = $request->input('username');
+        $mail = $request->input('mail');
+        $newPassword = $request->input('newPassword');
+        $bio = $request->input('bio');
+        $image = $request->input('file');
+
+        DB::table('users')
+        ->where('id', $id)
+        ->update(
+            ['username' => $username, 'mail' => $mail, 'newPassword' => $newPassword, 'bio' => $bio, 'images' => $image]
+        );
+
+        return redirect('/profile');
+    }
+
+
+
+
     public function search(){
         $users = DB::table('users')
 
@@ -32,6 +55,8 @@ class UsersController extends Controller
         ->where('follower', Auth::id())
         ->select('follow')
         ->get();
+        // followerの中でユーザーIDがログインユーザーと一致したfollowを取得
+
 
         return view('users.search', compact('users', 'followings'));
     }

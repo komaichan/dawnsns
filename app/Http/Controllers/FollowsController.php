@@ -35,7 +35,7 @@ class FollowsController extends Controller
         ->where('follow', $request->id)
         ->where('follower', Auth::id())
         ->delete();
-
+        // 選択された人のidがfollowカラムに入っていて、かつ、自分のidがfollowerカラムに入っていることが条件
         return redirect('/search');
     }
 }

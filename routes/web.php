@@ -40,6 +40,7 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
+Route::post('profile/update', 'UsersController@update');
 
 
 //　検索

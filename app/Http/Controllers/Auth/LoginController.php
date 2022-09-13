@@ -64,13 +64,15 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
 
-            $_SESSION[mb_strlen('password')];
+            // セッションに「passwordCount」という名前で、入力されたパスワードの文字数を数えて保存
+            session()->put('passwordCount', strlen($data['password']));
 
             $this->validator($data);
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
                 return redirect('/top', compact('password'));
+            // compactはリターンするviewファイルに持ってく変数を入れる
             }
         }
         return view("auth.login");

@@ -23,16 +23,17 @@
       </tr>
       <tr>
         <th>new Password</th>
-        <td><input type="password" class="profile-form">
+        <td><input type="password" class="profile-form" name="newPassword">
         </td>
       </tr>
       <tr>
         <th>Bio</th>
-        <td><textarea class="profile-form bio" name="bio" required></textarea></td>
+        <td><input type="textarea" class="profile-form bio" name="bio" required></input></td>
       </tr>
       <tr>
         <th>Icon Image</th>
-        <td><label class="profile-image">ファイルを選択<input type="file" name="file" accept="image/*" multiple></label></td>
+        <td><div id="profile-image"></div>
+        <input  id="example" type="file" name="file" accept="image/*" multiple></td>
       </tr>
     </table>
 

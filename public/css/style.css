@@ -464,19 +464,19 @@ header {
     resize: none;
 }
 
-.profile-table .profile-image {
+.profile-table #profile-image {
     font-size: 14px;
     width: 326px;
     height: 110px;
     padding-top: 45px;
     text-align: center;
-    cursor: pointer;
-    display: inline-block;
+    /* cursor: pointer;
+    display: inline-block; */
 }
 
-.profile-image input {
+/* #profile-image input {
     display: none;
-}
+} */
 
 .profile-btn {
     background-color: #7B9979;

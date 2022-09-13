@@ -27,6 +27,7 @@
 
 
   @if($followings->contains('follow',$user->id))
+  <!-- containsメソッドは指定したアイテムがコレクションに含まれているかどうか -->
 
   {!! Form::open(['url' => '/remove']) !!}
   {!! Form::hidden('id', $user->id) !!}
