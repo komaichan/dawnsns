@@ -11,7 +11,12 @@ class FollowsController extends Controller
 {
     //
     public function followList(){
-        return view('follows.followList');
+        $follows = DB::table('follows')
+        ->join('users','follows.follow', '=', 'users.id')
+        ->select('users.images')
+        ->get();
+
+        return view('follows.followList', compact('follows'));
     }
     public function followerList(){
         return view('follows.followerList');

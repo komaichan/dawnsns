@@ -28,24 +28,30 @@ class UsersController extends Controller
 
     public function update(Request $request){
 
-        if($request = null){
-            $request = DB::table('users')
-            ->where('id', Auth::id())
-            ->select('password','bio','images')
-            ->get();
-        }
+        $request = DB::table('users')
+        ->where('id', Auth::id())
+        ->select('password','bio','images')
+        ->get();
 
         $username = $request->input('username');
         $mail = $request->input('mail');
-        $newPassword = $request->input('Password');
         $bio = $request->input('bio');
         $image = $request->input('file');
 
+        if($newPassword != NULL){
+        $newPassword = $request->input('Password');
 
         DB::table('users')
         ->where('id', Auth::id())
         ->update(
-            ['username' => $username, 'mail' => $mail, 'Password' => $newPassword, 'bio' => $bio, 'images' => $image]
+            ['Password' => $newPassword]
+        );
+        }
+
+        DB::table('users')
+        ->where('id', Auth::id())
+        ->update(
+            ['username' => $username, 'mail' => $mail,'bio' => $bio, 'images' => $image]
         );
 
         return redirect('/profile');

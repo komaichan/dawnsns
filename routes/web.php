@@ -40,7 +40,7 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
-Route::post('profile/update', 'UsersController@update');
+Route::post('/profile/update', 'UsersController@update');
 
 
 //　検索
@@ -50,8 +50,8 @@ Route::post('user/search-form','UsersController@searchForm');
 
 
 // フォロー関連
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','FollowsController@followList');
+Route::get('/follower-list','FollowsController@followerList');
 
 Route::post('/remove', 'FollowsController@remove');
 Route::post('/follow', 'FollowsController@follow');

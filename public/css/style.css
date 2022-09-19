@@ -484,3 +484,12 @@ header {
     color: #fff;
     padding: 11px 52px;
 }
+
+
+/* フォロワー・フォローリスト */
+
+#follow-list,
+#follower-list {
+    height: 237.5px;
+    border-bottom: 5px #D7D7D7 solid;
+}
