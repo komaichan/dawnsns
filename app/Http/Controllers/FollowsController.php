@@ -12,14 +12,33 @@ class FollowsController extends Controller
     //
     public function followList(){
         $follows = DB::table('follows')
-        ->join('users','follows.follow', '=', 'users.id')
+        ->join('users','follows.follower', '=', 'users.id')
+        ->select('users.images', 'users.id')
+        ->get();
+
+        $posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->get();
+
+        return view('follows.followList', compact('follows','posts'));
+
+    }
+
+
+    public function followerList(){
+        $follows = DB::table('follows')
+        ->join('users','follows.follower', '=', 'users.id')
         ->select('users.images')
         ->get();
 
-        return view('follows.followList', compact('follows'));
-    }
-    public function followerList(){
-        return view('follows.followerList');
+        $posts = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+        ->get();
+
+
+        return view('follows.followerList', compact('follows','posts'));
     }
 
 

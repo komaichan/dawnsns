@@ -493,3 +493,18 @@ header {
     height: 237.5px;
     border-bottom: 5px #D7D7D7 solid;
 }
+
+#follow-list h1,
+#follower-list h1 {
+    font-size: 28px;
+    margin: 21px 0 21px 43px;
+    color: #6C6C6C;
+}
+
+.follow-icon {
+    margin: 0 187.5px 26.5px 113px;
+}
+
+.follow-icon img {
+    border-radius: 50%;
+}

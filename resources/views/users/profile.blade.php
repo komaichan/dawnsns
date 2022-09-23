@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="profile">
-  <img class="icon-img" src="./images/{{ Auth::user()->images }}">
+  <img class="icon-img" src="{{ asset('images/' . Auth::user()->images) }}">
 
   <div class="profile-update">
     {!! Form::open(['url' => 'profile/update']) !!}
@@ -28,7 +28,8 @@
       </tr>
       <tr>
         <th>Bio</th>
-        <td><input type="textarea" class="profile-form bio" name="bio" required></input></td>
+        <td>
+        {{ Form::textarea('bio', Auth::user()->bio, ['class' => 'profile-form bio']) }}
       </tr>
       <tr>
         <th>Icon Image</th>
