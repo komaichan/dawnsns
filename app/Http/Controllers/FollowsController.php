@@ -44,7 +44,10 @@ class FollowsController extends Controller
     }
 
     public function profile() {
-        return view('posts.profile');
+        $user = DB::table('users')
+        ->get();
+
+        return view('posts.profile', compact('user'));
     }
 
 
