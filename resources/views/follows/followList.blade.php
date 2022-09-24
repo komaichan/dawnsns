@@ -2,31 +2,27 @@
 
 @section('content')
 
-<!-- フォローリストはログインユーザーのフォローしているユーザーを表示するので、
-フォロワーIDはログインユーザーのID
-フォローIDはログインしているユーザーがフォローしているユーザーのIDだから、
-Auth::user.id＝follows.follower
-ログインしているユーザーとフォロワーのIDが一致するフォローIDのユーザーだけ表示する -->
 
 <div id="follow-list">
   <h1>Follow list</h1>
 
 
   @foreach ($follows as $follow)
+    @if($follow->follower === Auth::user()->id)
   <div class="follow-icon">
-    <a href="/posts/{{ $follow->id }}/profile"><img class="icon" src="./images/{{ $follow->images }}" alt="icon"></a>
+    <a href="/posts/{{ $follow->follow }}/profile"><img class="icon" src="./images/{{ $follow->images }}" alt="icon"></a>
 
   </div>
-
+    @endif
   @endforeach
 </div>
 
 
 @foreach ($posts as $post)
-  @if($post->user_id !== Auth::user()->id)
+  @if($follow->follower === Auth::user()->id)
     <div class="tweet-container">
         <div class="tweet-list">
-              <img class="icon" src="./images/{{ $post->images }}" alt="icon">
+              <a href="/posts/{{ $post->user_id }}/profile"><img class="icon" src="./images/{{ $post->images }}" alt="icon"></a>
             <div class="tweet-column">
                 <div class="tweet-time">
                   <p>{{ $post->username }}</p>

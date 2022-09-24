@@ -56,6 +56,8 @@ Route::get('/follower-list','FollowsController@followerList');
 Route::post('/remove', 'FollowsController@remove');
 Route::post('/follow', 'FollowsController@follow');
 
+Route::get('/posts/{id}/profile', 'FollowsController@profile');
+
 
 
 //----- post create -----

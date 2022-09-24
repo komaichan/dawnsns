@@ -13,12 +13,13 @@ class FollowsController extends Controller
     public function followList(){
         $follows = DB::table('follows')
         ->join('users','follows.follower', '=', 'users.id')
-        ->select('users.images', 'users.id')
+        ->select('users.images', 'follows.follower', 'follows.follow')
         ->get();
 
         $posts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->join('follows', 'posts.user_id', '=', 'follows.follow')
+            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
             ->get();
 
         return view('follows.followList', compact('follows','posts'));
@@ -28,17 +29,22 @@ class FollowsController extends Controller
 
     public function followerList(){
         $follows = DB::table('follows')
-        ->join('users','follows.follower', '=', 'users.id')
-        ->select('users.images')
+        ->join('users','follows.follow', '=', 'users.id')
+        ->select('users.images', 'follows.follower', 'follows.follow')
         ->get();
 
         $posts = DB::table('posts')
-        ->join('users', 'posts.user_id', '=', 'users.id')
-        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
-        ->get();
-
+            ->join('follows', 'posts.user_id', '=', 'follows.follow')
+            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
+            ->get();
 
         return view('follows.followerList', compact('follows','posts'));
+
+    }
+
+    public function profile() {
+        return view('posts.profile');
     }
 
 
