@@ -43,12 +43,27 @@ class FollowsController extends Controller
 
     }
 
-    public function profile() {
-        $user = DB::table('users')
+    public function profile($id) {
+        $users = DB::table('users')
+        ->where('users.id', '=', $id)
+        ->select('users.username', 'users.images', 'users.bio', 'users.id')
         ->get();
 
-        return view('posts.profile', compact('user'));
+        $posts = DB::table('posts')
+        ->where('users.id', '=', $id)
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+        ->get();
+
+        $followings = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->select('follow')
+        ->get();
+
+        return view('posts.profile', compact('users', 'posts', 'followings'));
     }
+
+
 
 
     public function follow(Request $request) {
@@ -60,7 +75,7 @@ class FollowsController extends Controller
         'follower' => $id
         ]);
 
-        return redirect('/search');
+        return back();
     }
 
     public function remove(Request $request) {
@@ -69,6 +84,6 @@ class FollowsController extends Controller
         ->where('follower', Auth::id())
         ->delete();
         // 選択された人のidがfollowカラムに入っていて、かつ、自分のidがfollowerカラムに入っていることが条件
-        return redirect('/search');
+        return back();
     }
 }

@@ -18,6 +18,8 @@ header {
 #row {
     display: flex;
     flex-flow: row wrap;
+    color: #6C6C6C;
+    ;
 }
 
 #container {
@@ -507,4 +509,52 @@ header {
 
 .follow-icon img {
     border-radius: 50%;
+}
+
+
+/* 相手のプロフィール */
+.profile-header {
+    border-bottom: 5px #D7D7D7 solid;
+
+}
+
+.user-profile {
+    margin: 42px auto 36.5px 83px;
+    display: flex;
+}
+
+.user-profile img {
+    border-radius: 50%;
+}
+
+.profile-menu th {
+    font-size: 20px;
+    font-weight: normal;
+    padding-right: 70px;
+}
+
+.profile-menu {
+    margin-left: 33px;
+}
+
+.th-name {
+    font-size: 20px;
+}
+
+.profile-header form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-header button {
+    background-color: #4B71CABF;
+    color: #fff;
+    border-radius: 5px;
+    padding: 11px 27px;
+    width: 138px;
+}
+
+.profile-header .remove-button {
+    background-color: #B95656;
+    padding: 11px 13px;
 }

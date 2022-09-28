@@ -15,9 +15,23 @@ class PostsController extends Controller
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
             ->get();
+
         return view('posts.index', compact('posts'));
     }
     // topにuserの情報をpostに乗っける
+
+    public function topIndex(){
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return redirect('layout.login', compact('followerCount', 'followCount'));
+    }
 
 
 
