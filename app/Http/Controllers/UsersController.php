@@ -23,7 +23,16 @@ class UsersController extends Controller
         // passwordCountの数値の分だけ「●」を繰り返す
         $password = str_repeat('●', $passwordCount);
 
-        return view('users.profile', compact('password'));
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return view('users.profile', compact('password', 'followerCount', 'followCount'));
     }
 
     public function update(Request $request){
@@ -77,7 +86,15 @@ class UsersController extends Controller
         // followerの中でユーザーIDがログインユーザーと一致したfollowを取得
 
 
-        return view('users.search', compact('users', 'followings'));
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return view('users.search', compact('users', 'followings', 'followerCount', 'followCount'));
     }
 
 
@@ -94,10 +111,29 @@ class UsersController extends Controller
             $query->where('username', 'like', '%'.$search.'%');
         }
         $users = $query->get();
+
+        $followings = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->select('follow')
+        ->get();
+
+
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
         return view('users.search')
         ->with([
                 'users' => $users,
-                'search' => $search,]);
+                'search' => $search,
+                'followings' => $followings,
+                'followerCount' => $followerCount,
+                'followCount' => $followCount,]);
     }
 
 }

@@ -22,7 +22,16 @@ class FollowsController extends Controller
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
             ->get();
 
-        return view('follows.followList', compact('follows','posts'));
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return view('follows.followList', compact('follows','posts', 'followerCount', 'followCount'));
 
     }
 
@@ -39,7 +48,16 @@ class FollowsController extends Controller
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
             ->get();
 
-        return view('follows.followerList', compact('follows','posts'));
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return view('follows.followerList', compact('follows','posts', 'followerCount', 'followCount'));
 
     }
 
@@ -60,7 +78,16 @@ class FollowsController extends Controller
         ->select('follow')
         ->get();
 
-        return view('posts.profile', compact('users', 'posts', 'followings'));
+
+        $followCount = DB::table('follows')
+        ->where('follows.follower', Auth::id())
+        ->count();
+
+        $followerCount = DB::table('follows')
+        ->where('follows.follow', Auth::id())
+        ->count();
+
+        return view('posts.profile', compact('users', 'posts', 'followings', 'followerCount', 'followCount'));
     }
 
 

@@ -366,6 +366,7 @@ header {
     border-bottom: #D7D7D7 solid 5px;
     height: 108px;
     width: 100%;
+    display: flex;
 }
 
 .search-form {
@@ -375,6 +376,11 @@ header {
     border: #707070 1px solid;
     border-radius: 5px;
     padding: 5px;
+}
+
+.search-word {
+    font-size: 18px;
+    margin: 36px auto 36.5px 115px;
 }
 
 .user-list {

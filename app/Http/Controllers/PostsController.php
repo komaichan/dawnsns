@@ -13,14 +13,13 @@ class PostsController extends Controller
     public function index(){
         $posts = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->leftJoin('follows', 'posts.user_id', '=', 'follows.follower')
+            ->where('follows.follower', Auth::id())
+            ->orWhere('posts.user_id', Auth::id())
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
             ->get();
 
-        return view('posts.index', compact('posts'));
-    }
-    // topにuserの情報をpostに乗っける
-
-    public function topIndex(){
+            dd($posts);
 
         $followCount = DB::table('follows')
         ->where('follows.follower', Auth::id())
@@ -30,10 +29,9 @@ class PostsController extends Controller
         ->where('follows.follow', Auth::id())
         ->count();
 
-        return redirect('layout.login', compact('followerCount', 'followCount'));
+        return view('posts.index', compact('posts', 'followerCount', 'followCount'));
     }
-
-
+    // topにuserの情報をpostに乗っける
 
 
     public function __construct()

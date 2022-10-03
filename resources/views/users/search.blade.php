@@ -5,13 +5,21 @@
 
 <div class="search-container">
 
+<div class="search-text">
   {!! Form::open(['url' => 'user/search-form']) !!}
   {{ csrf_field()}}
 
   {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
   <button type="submit" class="post-btn"><img src="{{ asset('images/post.png') }}"></button>
+</div>
+
 
   {!! Form::close() !!}
+
+  @if(isset($search))
+  <p class="search-word">検索ワード：{{ $search }}</p>
+
+  @endif
 
 </div>
 
@@ -51,3 +59,27 @@
 
 
 @endsection
+
+
+ちなったん
+なぎさ
+ほのか
+いじゅういんめぐみ
+大石泉
+おおたゆう
+くるみ
+くらりす
+みちる
+ちあき
+ちえ
+しのはられい
+そうまなつみ
+みやび
+あい
+めいこ
+えみ
+しほ
+さやや
+あずき
+みう
+きよら
