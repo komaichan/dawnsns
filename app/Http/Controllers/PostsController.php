@@ -13,13 +13,12 @@ class PostsController extends Controller
     public function index(){
         $posts = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->leftJoin('follows', 'posts.user_id', '=', 'follows.follower')
+            ->leftJoin('follows', 'posts.user_id', '=', 'follows.follow')
             ->where('follows.follower', Auth::id())
             ->orWhere('posts.user_id', Auth::id())
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
             ->get();
 
-            dd($posts);
 
         $followCount = DB::table('follows')
         ->where('follows.follower', Auth::id())
