@@ -543,8 +543,13 @@ header {
     margin-left: 33px;
 }
 
-.th-name {
+.td-name {
     font-size: 20px;
+}
+
+.td-bio {
+    font-size: 14px;
+    width: 240px;
 }
 
 .profile-header form {
@@ -558,9 +563,11 @@ header {
     border-radius: 5px;
     padding: 11px 27px;
     width: 138px;
+    margin: 0 27.5px 20.5px 0;
 }
 
 .profile-header .remove-button {
     background-color: #B95656;
     padding: 11px 13px;
+    margin: 0 27.5px 20.5px 0;
 }

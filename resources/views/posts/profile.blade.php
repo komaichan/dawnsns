@@ -10,11 +10,11 @@
   <table class="profile-menu">
     <tr>
       <th>Name</th>
-      <td class="th-name">{{ $user->username }}</td>
+      <td class="td-name">{{ $user->username }}</td>
     </tr>
     <tr>
       <th>Bio</th>
-      <td>{{ $user->bio }}</td>
+      <td class="td-bio">{{ $user->bio }}</td>
     </tr>
   </table>
 </div>

@@ -15,9 +15,9 @@
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     {{ Form::label('MailAddress') }}
     {{ Form::text('mail',null,['class' => 'input']) }}
-        @if ($errors->has('email'))
+        @if ($errors->has('mail'))
             <span class="help-block">
-            <strong>{{ $errors->first('email') }}</strong>
+            <strong>{{ $errors->first('mail') }}</strong>
             </span>
         @endif
     </div>
