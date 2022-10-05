@@ -13,14 +13,16 @@ class FollowsController extends Controller
     public function followList(){
         $follows = DB::table('follows')
         ->join('users','follows.follower', '=', 'users.id')
+        ->where('follows.follower', Auth::id())
         ->select('users.images', 'follows.follower', 'follows.follow')
         ->get();
 
         $posts = DB::table('posts')
-            ->join('follows', 'posts.user_id', '=', 'follows.follow')
-            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
-            ->get();
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->leftJoin('follows', 'posts.user_id', '=', 'follows.follow')
+            ->where('follows.follower', Auth::id())
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
+            ->get()->sortByDesc('created_at');;
 
 
         $followCount = DB::table('follows')
@@ -38,15 +40,18 @@ class FollowsController extends Controller
 
     public function followerList(){
         $follows = DB::table('follows')
-        ->join('users','follows.follow', '=', 'users.id')
+        ->join('users','follows.follower', '=', 'users.id')
+        ->where('follows.follow', Auth::id())
         ->select('users.images', 'follows.follower', 'follows.follow')
         ->get();
 
         $posts = DB::table('posts')
-            ->join('follows', 'posts.user_id', '=', 'follows.follow')
-            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'follows.follower', 'follows.follow', 'users.username', 'users.images')
-            ->get();
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->leftJoin('follows', 'posts.user_id', '=', 'follows.follower')
+            ->where('follows.follow', Auth::id())
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
+            ->get()->sortByDesc('created_at');;
+
 
 
         $followCount = DB::table('follows')

@@ -75,7 +75,7 @@ class UsersController extends Controller
 
     public function search(){
         $users = DB::table('users')
-
+        ->where('users.id', '!=', Auth::id())
         ->select('users.username', 'users.images', 'users.id')
         ->get();
 

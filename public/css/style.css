@@ -509,8 +509,15 @@ header {
     color: #6C6C6C;
 }
 
-.follow-icon {
+.follow-icon-image {
+    display: flex;
     padding: 0 187.5px 26.5px 113px;
+}
+
+.follow-icon {
+    width: 55px;
+    height: 55px;
+    margin-right: 25px;
 }
 
 .follow-icon img {

@@ -29,9 +29,11 @@
 
 <div class="user-list">
   <div class="user-container">
+
     <img class="icon" src="/images/{{ $user->images }}" alt="icon">
     <p>{{ $user->username }}</p>
   </div>
+
 
 
   @if($followings->contains('follow',$user->id))
