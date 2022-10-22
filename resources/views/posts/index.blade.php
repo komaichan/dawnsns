@@ -20,6 +20,7 @@
 
     <button type="submit" class="post-btn"><img src="images/post.png"></button>
   </div>
+
 </div>
 
 
@@ -27,6 +28,7 @@
 
     @foreach ($posts as $post)
     <div class="tweet-container">
+
       <div class="tweet-list">
             <img class="icon" src="./images/{{ $post->images }}" alt="icon">
           <div class="tweet-column">
@@ -41,16 +43,20 @@
 
       @if($post->user_id === Auth::user()->id)
       <div class="edit-trash">
-            <a href class="edit-link"><img class="edit" src="images/edit.png" alt="edit"></a>
-            {!! Form::open(['url' => 'post/edit']) !!}
-              <div class="edit-form">
-                <span class="edit-text">
-                  {!! Form::hidden('id', $post->id) !!}
-                  {!! Form::input('textarea', 'editPost', $post->posts, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}
-                  <button type="submit" class="post-btn"><img src="images/edit.png"></button>
-                </span>
-              </div>
-            {!! Form::close() !!}
+
+            <a href class="edit-link" ta-toggle="modal" data-target="#Modal" data-whatever="{{ $post->posts }}" data-post-id="{{ $post->id }}">
+              <img class="edit" src="images/edit.png" alt="edit">
+            </a>
+
+            {!! Form::open(['url' => 'post/{{ $post->id }}/edit']) !!}
+                <div class="edit-form" id="Modal">
+                  <span class="edit-text">
+                    {!! Form::hidden('id', $post->id) !!}
+                    {!! Form::input('textarea', 'editPost', $post->posts, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}
+                    <button type="submit" class="post-btn"><img src="images/edit.png"></button>
+                  </span>
+                </div>
+              {!! Form::close() !!}
 
             <a class="trash" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"></a>
       </div>

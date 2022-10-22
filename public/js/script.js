@@ -18,11 +18,26 @@ $(function () {
 
 /* モーダル（編集画面表示） */
 
-$(function () { //①
-  $('.edit').each(function () {
+// $(function () {
+//   $('#Modal').each(function () {
+//     $(this).on('click', function () {
+//       $('.edit-form').fadeIn();
+//       return false;
+//     });
+//   });
+// });
+
+$(function () {
+  $('.edit-link').each(function () {
     $(this).on('click', function () {
+      var target = $(this).data('#Modal');
+      var modal = document.getElementById(target);
       $('.edit-trash form').fadeIn();
       return false;
     });
+  });
+  $('.modalClose').on('click', function () {
+    $('#Modal').fadeOut();
+    return false;
   });
 });

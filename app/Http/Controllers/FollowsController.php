@@ -12,26 +12,27 @@ class FollowsController extends Controller
     //
     public function followList(){
         $follows = DB::table('follows')
-        ->join('users','follows.follower', '=', 'users.id')
-        ->where('follows.follower', Auth::id())
-        ->select('users.images', 'follows.follower', 'follows.follow')
-        ->get();
+            ->join('users','follows.follower', '=', 'users.id')
+            ->where('follows.follower', Auth::id())
+            ->select('users.images', 'follows.follower', 'follows.follow')
+            ->get();
 
         $posts = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->leftJoin('follows', 'posts.user_id', '=', 'follows.follow')
             ->where('follows.follower', Auth::id())
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
-            ->get()->sortByDesc('created_at');;
+            ->get()
+            ->sortByDesc('created_at');
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('follows.followList', compact('follows','posts', 'followerCount', 'followCount'));
 
@@ -40,10 +41,10 @@ class FollowsController extends Controller
 
     public function followerList(){
         $follows = DB::table('follows')
-        ->join('users','follows.follower', '=', 'users.id')
-        ->where('follows.follow', Auth::id())
-        ->select('users.images', 'follows.follower', 'follows.follow')
-        ->get();
+            ->join('users','follows.follower', '=', 'users.id')
+            ->where('follows.follow', Auth::id())
+            ->select('users.images', 'follows.follower', 'follows.follow')
+            ->get();
 
         $posts = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
@@ -55,12 +56,12 @@ class FollowsController extends Controller
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('follows.followerList', compact('follows','posts', 'followerCount', 'followCount'));
 
@@ -68,29 +69,29 @@ class FollowsController extends Controller
 
     public function profile($id) {
         $users = DB::table('users')
-        ->where('users.id', '=', $id)
-        ->select('users.username', 'users.images', 'users.bio', 'users.id')
-        ->get();
+            ->where('users.id', '=', $id)
+            ->select('users.username', 'users.images', 'users.bio', 'users.id')
+            ->get();
 
         $posts = DB::table('posts')
-        ->where('users.id', '=', $id)
-        ->join('users', 'posts.user_id', '=', 'users.id')
-        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
-        ->get();
+            ->where('users.id', '=', $id)
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->get();
 
         $followings = DB::table('follows')
-        ->where('follower', Auth::id())
-        ->select('follow')
-        ->get();
+            ->where('follower', Auth::id())
+            ->select('follow')
+            ->get();
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('posts.profile', compact('users', 'posts', 'followings', 'followerCount', 'followCount'));
     }
@@ -112,9 +113,9 @@ class FollowsController extends Controller
 
     public function remove(Request $request) {
         DB::table('follows')
-        ->where('follow', $request->id)
-        ->where('follower', Auth::id())
-        ->delete();
+            ->where('follow', $request->id)
+            ->where('follower', Auth::id())
+            ->delete();
         // 選択された人のidがfollowカラムに入っていて、かつ、自分のidがfollowerカラムに入っていることが条件
         return back();
     }

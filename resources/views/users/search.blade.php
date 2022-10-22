@@ -5,21 +5,21 @@
 
 <div class="search-container">
 
-<div class="search-text">
-  {!! Form::open(['url' => 'user/search-form']) !!}
-  {{ csrf_field()}}
+  <div class="search-text">
+    {!! Form::open(['url' => 'user/search-form']) !!}
+    {{ csrf_field()}}
 
-  {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
-  <button type="submit" class="post-btn"><img src="{{ asset('images/post.png') }}"></button>
-</div>
+    {!! Form::input('text', 'search', null, ['required', 'class' => 'search-form', 'placeholder' => 'ユーザー名', 'autocomplete' => 'off'] ) !!}
+    <button type="submit" class="post-btn"><img src="{{ asset('images/post.png') }}"></button>
+  </div>
 
 
-  {!! Form::close() !!}
+    {!! Form::close() !!}
 
-  @if(isset($search))
-  <p class="search-word">検索ワード：{{ $search }}</p>
+    @if(isset($search))
+    <p class="search-word">検索ワード：{{ $search }}</p>
 
-  @endif
+    @endif
 
 </div>
 
@@ -28,6 +28,7 @@
 @foreach ($users as $user)
 
 <div class="user-list">
+
   <div class="user-container">
 
     <img class="icon" src="/images/{{ $user->images }}" alt="icon">

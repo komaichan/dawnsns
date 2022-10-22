@@ -40,7 +40,7 @@
     <button type="submit" class="profile-btn">更 新</button>
 
     {!! Form::close() !!}
-</div>
+  </div>
 
 </div>
 

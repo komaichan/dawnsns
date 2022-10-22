@@ -17,16 +17,17 @@ class PostsController extends Controller
             ->where('follows.follower', Auth::id())
             ->orWhere('posts.user_id', Auth::id())
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images', 'follows.follower')
-            ->get()->sortByDesc('created_at');;
+            ->get()
+            ->sortByDesc('created_at');
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('posts.index', compact('posts', 'followerCount', 'followCount'));
     }
@@ -54,15 +55,29 @@ class PostsController extends Controller
     }
 
 
-    public function edit(Request $request)
+    // public function edit(Request $request)
+    // {
+    //     $id = $request->input('id');
+    //     $edit_post = $request->input('editPost');
+    //     DB::table('posts')
+    //         ->where('id', $id)
+    //         ->update(
+    //             ['posts' => $edit_post]
+    //         );
+
+    //     return redirect('/top');
+    // }
+
+        public function edit(Request $request)
     {
-        $id = $request->input('id');
         $edit_post = $request->input('editPost');
+        $id = $request->input('id');
+
         DB::table('posts')
-        ->where('id', $id)
-        ->update(
-            ['posts' => $edit_post]
-        );
+            ->where('id', $id)
+            ->update(
+                ['posts' => $edit_post]
+            );
 
         return redirect('/top');
     }
@@ -74,5 +89,16 @@ class PostsController extends Controller
             ->delete();
 
         return redirect('/top');
+    }
+
+    public function test()
+    {
+        $test = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->where('posts.user_id', '=', Auth::id())
+        ->select('posts.posts')
+        ->get();
+
+        return view('users.test', compact('test'));
     }
 }

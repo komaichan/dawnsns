@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'username' => 'required|between:4,12',
             'mail' => 'required|email|between:4,12|unique:users',
             'password' => 'required|between:4,12|unique:users|alpha_num',
-            'password-confirm' => 'required|between:4,12|unique:users|confirmed:password|alpha_num',
+            'password-confirm' => 'required|between:4,12|same:password|alpha_num',
 
         ],
         [
@@ -71,8 +71,7 @@ class RegisterController extends Controller
             'password.alpha_num' => '使用できるのは英数字のみです',
             'password-confirm.required' => '入力必須です',
             'password-confirm.between' => '4文字以上12文字以内で入力してください',
-            'password-confirm.unique' => '既に登録されているパスワードです',
-            'password-confirm.confirmed' => 'パスワードが一致しません',
+            'password-confirm.same' => 'パスワードが一致しません。変更しましょう',
             'password-confirm.alpha_num' => '使用できるのは英数字のみです',
 
         ]);

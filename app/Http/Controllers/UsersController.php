@@ -25,12 +25,12 @@ class UsersController extends Controller
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('users.profile', compact('password', 'followerCount', 'followCount'));
     }
@@ -46,26 +46,26 @@ class UsersController extends Controller
         if($newPassword != NULL){
 
         DB::table('users')
-        ->where('id', Auth::id())
-        ->update(
-            ['Password' => bcrypt($newPassword)]
-        );
+            ->where('id', Auth::id())
+            ->update(
+                ['Password' => bcrypt($newPassword)]
+            );
         }
 
         if($image != NULL){
 
-            DB::table('users')
-        ->where('id', Auth::id())
-        ->update(
-            ['images' => $image]
-        );
+        DB::table('users')
+            ->where('id', Auth::id())
+            ->update(
+                ['images' => $image]
+            );
         }
 
         DB::table('users')
-        ->where('id', Auth::id())
-        ->update(
-            ['username' => $username, 'mail' => $mail,'bio' => $bio]
-        );
+            ->where('id', Auth::id())
+            ->update(
+                ['username' => $username, 'mail' => $mail,'bio' => $bio]
+            );
 
         return redirect('/profile');
     }
@@ -75,24 +75,24 @@ class UsersController extends Controller
 
     public function search(){
         $users = DB::table('users')
-        ->where('users.id', '!=', Auth::id())
-        ->select('users.username', 'users.images', 'users.id')
-        ->get();
+            ->where('users.id', '!=', Auth::id())
+            ->select('users.username', 'users.images', 'users.id')
+            ->get();
 
         $followings = DB::table('follows')
-        ->where('follower', Auth::id())
-        ->select('follow')
-        ->get();
+            ->where('follower', Auth::id())
+            ->select('follow')
+            ->get();
         // followerの中でユーザーIDがログインユーザーと一致したfollowを取得
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('users.search', compact('users', 'followings', 'followerCount', 'followCount'));
     }
@@ -100,8 +100,8 @@ class UsersController extends Controller
 
     public function searchForm(Request $request){
         $users = DB::table('users')
-        ->select('users.username')
-        ->get();
+            ->select('users.username')
+            ->get();
 
         $search = $request->input('search');
 
@@ -113,19 +113,19 @@ class UsersController extends Controller
         $users = $query->get();
 
         $followings = DB::table('follows')
-        ->where('follower', Auth::id())
-        ->select('follow')
-        ->get();
+            ->where('follower', Auth::id())
+            ->select('follow')
+            ->get();
 
 
 
         $followCount = DB::table('follows')
-        ->where('follows.follower', Auth::id())
-        ->count();
+            ->where('follows.follower', Auth::id())
+            ->count();
 
         $followerCount = DB::table('follows')
-        ->where('follows.follow', Auth::id())
-        ->count();
+            ->where('follows.follow', Auth::id())
+            ->count();
 
         return view('users.search')
         ->with([
