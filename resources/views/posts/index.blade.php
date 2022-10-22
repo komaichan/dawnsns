@@ -44,11 +44,11 @@
       @if($post->user_id === Auth::user()->id)
       <div class="edit-trash">
 
-            <a href class="edit-link" ta-toggle="modal" data-target="#Modal" data-whatever="{{ $post->posts }}" data-post-id="{{ $post->id }}">
+            <a href class="edit-link" data-toggle="modal" data-target="#Modal" data-whatever="{{ $post->posts }}" data-post-id="{{ $post->id }}">
               <img class="edit" src="images/edit.png" alt="edit">
             </a>
 
-            {!! Form::open(['url' => 'post/{{ $post->id }}/edit']) !!}
+            {!! Form::open(['url' => 'post/edit']) !!}
                 <div class="edit-form" id="Modal">
                   <span class="edit-text">
                     {!! Form::hidden('id', $post->id) !!}

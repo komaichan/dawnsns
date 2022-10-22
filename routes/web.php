@@ -69,7 +69,7 @@ Route::post('post/create', 'PostsController@create');
 
 
 //----- post編集-----
-Route::get('post/{id}/edit', 'PostsController@edit');
+Route::post('post/edit', 'PostsController@edit');
 
 
 //----- post delete -----

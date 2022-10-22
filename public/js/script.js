@@ -36,8 +36,11 @@ $(function () {
       return false;
     });
   });
-  $('.modalClose').on('click', function () {
-    $('#Modal').fadeOut();
-    return false;
-  });
 });
+
+addEventListener('click', outsideClose);
+function outsideClose(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
