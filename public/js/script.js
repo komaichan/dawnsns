@@ -31,6 +31,7 @@ $(function () {
   $('.edit-link').each(function () {
     $(this).on('click', function () {
       var target = $(this).data('#Modal');
+
       var modal = document.getElementById(target);
       $('.edit-trash form').fadeIn();
       return false;

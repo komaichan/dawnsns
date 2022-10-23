@@ -55,18 +55,6 @@ class PostsController extends Controller
     }
 
 
-    // public function edit(Request $request)
-    // {
-    //     $id = $request->input('id');
-    //     $edit_post = $request->input('editPost');
-    //     DB::table('posts')
-    //         ->where('id', $id)
-    //         ->update(
-    //             ['posts' => $edit_post]
-    //         );
-
-    //     return redirect('/top');
-    // }
 
         public function edit(Request $request)
     {
