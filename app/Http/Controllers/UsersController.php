@@ -18,7 +18,7 @@ class UsersController extends Controller
         $user = DB::table('users')
         ->get();
 
-        // セッションに保存した「passwordCount」を取得
+        // ログインコントローラーでセッションに保存した「passwordCount」を取得
         $passwordCount = session()->get('passwordCount');
         // passwordCountの数値の分だけ「●」を繰り返す
         $password = str_repeat('●', $passwordCount);
@@ -51,8 +51,18 @@ class UsersController extends Controller
                 ['Password' => bcrypt($newPassword)]
             );
         }
+        // bcryptでハッシュ化する
 
         if($image != NULL){
+
+            if($request->isMethod('POST'))
+        {
+            $path = $request->file('images')->store('public/img');
+            $image = User::find(\Auth::id());
+            $image->image = basename($path); //imageカラムに保存
+            $image->save();
+        }
+
 
         DB::table('users')
             ->where('id', Auth::id())

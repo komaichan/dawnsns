@@ -18,30 +18,19 @@ $(function () {
 
 /* モーダル（編集画面表示） */
 
-// $(function () {
-//   $('#Modal').each(function () {
-//     $(this).on('click', function () {
-//       $('.edit-form').fadeIn();
-//       return false;
-//     });
-//   });
-// });
 
 $(function () {
   $('.edit-link').each(function () {
     $(this).on('click', function () {
-      var target = $(this).data('#Modal');
-
+      var target = $(this).data('target');
+      var postId = $(this).data('post-id');
+      var whatever = $(this).data('whatever');
       var modal = document.getElementById(target);
+
+      $('.postId').val(postId);
+      $('.form-control').val(whatever);
       $('.edit-trash form').fadeIn();
       return false;
     });
   });
 });
-
-addEventListener('click', outsideClose);
-function outsideClose(e) {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
-}

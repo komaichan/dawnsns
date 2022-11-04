@@ -51,7 +51,7 @@
             {!! Form::open(['url' => 'post/edit', 'id' => $post->id]) !!}
                 <div class="edit-form" id="Modal" >
                   <span class="edit-text">
-                    {!! Form::hidden('id', $post->id) !!}
+                    {!! Form::hidden('id', null, ['class' => 'postId']) !!}
                     {!! Form::input('textarea', 'editPost', $post->posts, ['required', 'class' => 'form-control','autocomplete' => 'off']) !!}
                     <button type="submit" class="post-btn"><img src="images/edit.png"></button>
                   </span>

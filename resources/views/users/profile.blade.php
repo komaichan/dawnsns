@@ -3,10 +3,10 @@
 @section('content')
 
 <div id="profile">
-  <img class="icon-img" src="{{ asset('images/' . Auth::user()->images) }}">
+  <img class="icon-img" src="{{ asset('/storage/img/' . Auth::user()->images) }}">
 
   <div class="profile-update">
-    {!! Form::open(['url' => 'profile/update']) !!}
+    {!! Form::open(['url' => 'profile/update', 'enctype' => 'multipart/form-data']) !!}
 
     <table class="profile-table">
       <tr>
