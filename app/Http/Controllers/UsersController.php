@@ -41,7 +41,7 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $newPassword = $request->input('newPassword');
         $bio = $request->input('bio');
-        $image = $request->input('file');
+        $image = $request->file('image');
 
         if($newPassword != NULL){
 
@@ -55,14 +55,10 @@ class UsersController extends Controller
 
         if($image != NULL){
 
-            if($request->isMethod('POST'))
-        {
-            $path = $request->file('images')->store('public/img');
-            $image = User::find(\Auth::id());
-            $image->image = basename($path); //imageカラムに保存
-            $image->save();
-        }
-
+        $path = $request->file('image')->storeAs('public/images', Auth::id() . '.jpg');
+        $image = User::find(\Auth::id());
+        $image->image = basename($path); //imageカラムに保存
+        $image->save();
 
         DB::table('users')
             ->where('id', Auth::id())
@@ -72,10 +68,10 @@ class UsersController extends Controller
         }
 
         DB::table('users')
-            ->where('id', Auth::id())
-            ->update(
-                ['username' => $username, 'mail' => $mail,'bio' => $bio]
-            );
+        ->where('id', Auth::id())
+        ->update(
+            ['username' => $username, 'mail' => $mail,'bio' => $bio]
+        );
 
         return redirect('/profile');
     }

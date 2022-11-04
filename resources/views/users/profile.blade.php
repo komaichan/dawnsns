@@ -3,10 +3,12 @@
 @section('content')
 
 <div id="profile">
-  <img class="icon-img" src="{{ asset('/storage/img/' . Auth::user()->images) }}">
+  <img class="icon-img" src="{{ asset('/storage/images/' . \Auth::user()->images) }}">
 
   <div class="profile-update">
     {!! Form::open(['url' => 'profile/update', 'enctype' => 'multipart/form-data']) !!}
+
+    {{ csrf_field() }}
 
     <table class="profile-table">
       <tr>
@@ -33,7 +35,11 @@
       </tr>
       <tr>
         <th>Icon Image</th>
-        <td><label class="profile-image">ファイルを選択<input type="file" name="file" accept="image/*" multiple></label></td>
+        <td>
+          <label class="profile-image">ファイルを選択
+            {{ Form::file('image', ['class' => 'custom-file-input', 'id' => 'fileImage']) }}
+          </label>
+        </td>
       </tr>
     </table>
 
