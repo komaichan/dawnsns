@@ -55,7 +55,8 @@ class UsersController extends Controller
 
         if($image != NULL){
 
-        $path = $request->file('image')->storeAs('public/images', Auth::id() . '.jpg');
+        $file_name = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img', $file_name);
         $image = User::find(\Auth::id());
         $image->image = basename($path); //imageカラムに保存
         $image->save();
@@ -66,6 +67,7 @@ class UsersController extends Controller
                 ['images' => $image]
             );
         }
+        dd($image);
 
         DB::table('users')
         ->where('id', Auth::id())

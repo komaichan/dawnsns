@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="profile">
-  <img class="icon-img" src="{{ asset('/storage/images/' . \Auth::user()->images) }}">
+  <img class="icon-img" src="{{ asset('/storage/img/' . Auth::user()->images) }}">
 
   <div class="profile-update">
     {!! Form::open(['url' => 'profile/update', 'enctype' => 'multipart/form-data']) !!}
