@@ -524,6 +524,10 @@ header {
     border-radius: 50%;
 }
 
+.follow-icon a {
+    display: block;
+}
+
 
 /* 相手のプロフィール */
 .profile-header {

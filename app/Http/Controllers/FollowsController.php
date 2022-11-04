@@ -12,7 +12,7 @@ class FollowsController extends Controller
     //
     public function followList(){
         $follows = DB::table('follows')
-            ->join('users','follows.follower', '=', 'users.id')
+            ->join('users','follows.follow', '=', 'users.id')
             ->where('follows.follower', Auth::id())
             ->select('users.images', 'follows.follower', 'follows.follow')
             ->get();

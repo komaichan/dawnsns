@@ -3,10 +3,10 @@
 @section('content')
 
 <div id="profile">
-  <img class="icon-img" src="{{ asset('/storage/img/' . Auth::user()->images) }}">
+  <img class="icon-img" src="/public/profile_images/{{ Auth::id() }}.jpg">
 
   <div class="profile-update">
-    {!! Form::open(['url' => 'profile/update', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::open(['url' => 'profile/update', 'files' => true, 'enctype' => 'multipart/form-data' ]) !!}
 
     {{ csrf_field() }}
 
@@ -36,11 +36,12 @@
       <tr>
         <th>Icon Image</th>
         <td>
-          <label class="profile-image">ファイルを選択
-            {{ Form::file('image', ['class' => 'custom-file-input', 'id' => 'fileImage']) }}
+          <label class="">ファイルを選択
+            {{ Form::file('image', ['class' => 'custom-file-input']) }}
           </label>
         </td>
       </tr>
+
     </table>
 
     <button type="submit" class="profile-btn">更 新</button>

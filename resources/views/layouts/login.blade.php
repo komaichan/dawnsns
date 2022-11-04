@@ -39,7 +39,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <img src="{{ asset('images/' . Auth::user()->images) }}">
+                    <img src="{{ asset('/storage/img/' . Auth::user()->images) }}">
                 <div>
             </div>
         </div>

@@ -41,7 +41,6 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $newPassword = $request->input('newPassword');
         $bio = $request->input('bio');
-        $image = $request->file('image');
 
         if($newPassword != NULL){
 
@@ -53,13 +52,11 @@ class UsersController extends Controller
         }
         // bcryptでハッシュ化する
 
-        if($image != NULL){
+        if($request->file('image') != NULL){
 
-        $file_name = $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('public/img', $file_name);
-        $image = User::find(\Auth::id());
-        $image->images = basename($path); //imageカラムに保存
-        $image->save();
+        // $file_name = $request->file('image')->getClientOriginalName();
+
+        $image = $request->file('image')->storeAs('public/profile_images', Auth::id() . '.jpg');
 
         DB::table('users')
             ->where('id', Auth::id())
@@ -67,7 +64,6 @@ class UsersController extends Controller
                 ['images' => $image]
             );
         }
-        dd($image);
 
         DB::table('users')
         ->where('id', Auth::id())
