@@ -58,7 +58,7 @@ class UsersController extends Controller
         $file_name = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('public/img', $file_name);
         $image = User::find(\Auth::id());
-        $image->image = basename($path); //imageカラムに保存
+        $image->images = basename($path); //imageカラムに保存
         $image->save();
 
         DB::table('users')
